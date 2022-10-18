@@ -57,7 +57,7 @@ class InventarioController extends Controller
         catch (Throwable $e) {
             report($e);
             dd($e);
-            return view;
+            
         }
     }
 
