@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function(){
-    Route::resource('inventario',InventarioController::class);
+Route::middleware('auth')->group(function(){        
+    Route::get('inventario', [InventarioController::class, 'index'])->name('inventario');
+    Route::resource('cadastro/item',ItemController::class);
 });
 
 require __DIR__.'/auth.php';

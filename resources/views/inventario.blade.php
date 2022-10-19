@@ -5,20 +5,49 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="/inventario" method="post">
-                        @csrf
-                        <input type="text" name="nome_item" id="nome_item" placeholder="Nome Item">
-                        <input type="text" name="descricao_item", id="descricao_item" placeholder="Descrilção Item">
-                        <input type="text" name="quantidade_item" id="quantidade_item" placeholder="Quantidade Item">
-                        <input type="text" name="img_item" id="img" placeholder="Imagem Item">
-                        <button type="submit">Cadastrar</button>
-                    </form>
-                </div>
-            </div>
+
+
+    <div class="container">
+        <div class="container-md-4">
+            <div class="md-4">
+          <label for="selecao_setor" class="form-label">Setor</label>
+          <select id="selecao_setor" class="form-select">
+            <option selected>Selecione...</option>
+            <option>...</option>
+          </select>
         </div>
+        </div>
+    </div>
+    <div class="content ">
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Data Criação</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                    <button type="submit" class="btn">Editar</button>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">4</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>
+                    <button type="submit" class="btn btn-warning">Visualizar</button>
+                    <button type="submit" class="btn btn-warning">Editar</button>
+                    <button type="submit" class="btn btn-warning">Excluir</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </x-app-layout>

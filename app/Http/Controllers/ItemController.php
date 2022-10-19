@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\InventarioRequest;
-use App\Models\Inventario;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Throwable;
 
-class InventarioController extends Controller
+
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return view('inventario');
+        return view('item');
     }
 
     /**
@@ -27,7 +26,7 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -36,20 +35,31 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InventarioRequest $request)
-    {   
+    public function store(Request $request)
+    {
         try{
-        $inventario = new Inventario;
-        $inventario->create(['fk_setor' => 1]);
-        
-        return view('inventario',['fk_inventario' => $inventario->get('id')]);
-        
-        }
-        catch (Throwable $e) {
-            report($e);
-            dd($e);
+            $fkinventario = $request->fk_inventario;
+            $cadastrar = new Item;
+            $nome = $request->nome_item;
+            $descricao =  $request->descricao_item;
+            $quantidade = $request->quantidade_item;
+            $img = $request->img_item;
+            $cadastrar->create([
+                'nome_item' => $nome,
+                'descricao_item' => $descricao,
+                'quantidade_item' => $quantidade,
+                'img_item' =>$img,
+                'fk_inventario' => $fkinventario,
+                'fk_categoria' => 4,
+            ]);
+            return view('inventario',['message' => 'Item Cadastrados']);
             
-        }
+            }
+            catch (Throwable $e) {
+                report($e);
+                dd($e);
+                
+            }
     }
 
     /**
