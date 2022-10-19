@@ -9,15 +9,16 @@
 
     <div class="container">
         <div class="row">
-            <div class="col">
-                <label for="selecao_setor" class="form-label">Setor</label>
+            <div class="col align-self-center">
+                <label for="selecao_setor" class="form-label">Selecione o setor:</label>
                 <select id="selecao_setor" class="form-select">
                     <option selected>Selecione...</option>
                     <option>...</option>
                 </select>
             </div>
-            <div class="col">
-                <button type="submit" class="btn"> Novo Inventário</button>
+            <div class="col align-self-center">
+                <p>Opções:</p>
+                <button type="submit" class="btn btn-warning"> Novo Inventário</button>
             </div>
         </div>
         
