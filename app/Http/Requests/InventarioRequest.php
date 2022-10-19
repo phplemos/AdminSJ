@@ -24,8 +24,7 @@ class InventarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_item.required' => 'O nome do item é obrigatório',
-            'quantidade_item.required' => 'A quantidade do item é obrigatória'
+            'fk_setor.required' => 'Precisa definir o setor',
         ];
     }
 }

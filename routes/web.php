@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function(){        
     Route::get('inventario', [InventarioController::class, 'index'])->name('inventario');
+    Route::resource('inventario.store',InvetarioController::class)->names(['store' => 'inventario/novo']);
     Route::resource('cadastro/item',ItemController::class);
 });
 

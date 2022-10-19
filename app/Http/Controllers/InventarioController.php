@@ -17,7 +17,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return view('inventario');
+        return view('layouts.inventario.lista');
     }
 
     /**
@@ -40,9 +40,9 @@ class InventarioController extends Controller
     {   
         try{
         $inventario = new Inventario;
-        $inventario->create(['fk_setor' => 1]);
+        $inventario->create(['fk_setor' => $request->fk_setor]);
         
-        return view('inventario',['fk_inventario' => $inventario->get('id')]);
+        return view('layouts.inventario.novo',['fk_inventario' => $inventario->get('id')]);
         
         }
         catch (Throwable $e) {
