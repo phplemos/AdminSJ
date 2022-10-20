@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventarioRequest;
 use App\Models\Inventario;
 use App\Models\Item;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -17,12 +18,19 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return view('layouts.inventario.lista');
+        $setor = new Setor;
+        $lista = $setor->all();
+        $inventario = new Inventario;
+        $inventarios = $inventario->all();
+        // PAREI AQUI HJ
+        // $nome_setor = Setor::find($inventarios->fk_inventario);
+        dd($lista);
+        return view('layouts.inventario.lista', compact('lista','inventarios','nome_setor'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -38,11 +46,13 @@ class InventarioController extends Controller
      */
     public function store(InventarioRequest $request)
     {   
+
         try{
+        $fk_setor = $request->fk_setor;
         $inventario = new Inventario;
-        $inventario->create(['fk_setor' => $request->fk_setor]);
+        $inventario->create(['fk_setor' => strval($fk_setor)]);
         
-        return view('layouts.inventario.novo',['fk_inventario' => $inventario->get('id')]);
+        return view('layouts.inventario.novo',['fk_inventario' => $inventario->all()]);
         
         }
         catch (Throwable $e) {
@@ -60,8 +70,10 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $inventario = new Inventario;
+        $inventario->create(['fk_setor' => $id]);
+        
+        return view('layouts.inventario.novo',['fk_inventario' => $inventario->get('id')]);     }
 
     /**
      * Show the form for editing the specified resource.

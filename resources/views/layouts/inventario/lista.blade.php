@@ -17,19 +17,23 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col align-self-center">
-                            <label for="selecao_setor" class="form-label">Selecione o setor:</label>
-                            <select id="selecao_setor" class="form-select">
-                                <option selected>Selecione...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col align-self-center">
-                            <p>Opções:</p>
-                            <form for="/inventario/novo">
+                        <!-- ATIVAR FUNCIONALIDADE DE SELEÇÃO DO SETOR -->
+                        <form method="post" action="{{ route('inventario.store') }}">
+                            @csrf
+                            <div class="col align-self-center">
+                                <label for="selecao_setor" class="form-label">Selecione o setor:</label>
+                                <select id="selecao_setor" class="form-select" id="fk_setor" name="fk_setor">
+                                    @foreach ($lista as $setor)
+                                        <option name="fk_setor" value="{{ $setor->id }}">{{ $setor->nome_setor }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col align-self-center">
+                                <p>Opções:</p>
                                 <button type="submit" class="btn btn-warning"> Novo Inventário</button>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- MODAL PARA CADASTRO DE ITEM -->
 
@@ -47,26 +51,19 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning">Visualizar</button>
-                                    <button type="submit" class="btn btn-warning">Editar</button>
-                                    <button type="submit" class="btn btn-warning">Excluir</button>
-                                </td>
-                            </tr>
+                            @foreach ($inventarios as $inventario)
+                                <tr>
+                                    <th scope="row">{{$inventario->id}}</th>
+                                    <td>{{$nome_setor}}</td>
+                                    <td>{{$inventario->created_at}}</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-warning">Visualizar</button>
+                                        <button type="submit" class="btn btn-warning">Editar</button>
+                                        <button type="submit" class="btn btn-warning">Excluir</button>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                            <tr>
-                                <th scope="row">4</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning">Visualizar</button>
-                                    <button type="submit" class="btn btn-warning">Editar</button>
-                                    <button type="submit" class="btn btn-warning">Excluir</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

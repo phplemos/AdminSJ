@@ -24,7 +24,6 @@ class InventarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'fk_setor.required' => 'Precisa definir o setor',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ItemController;
+use App\Models\Inventario;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,9 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function(){        
-    Route::get('inventario', [InventarioController::class, 'index'])->name('inventario');
-    Route::resource('inventario.store',InvetarioController::class)->names(['store' => 'inventario/novo']);
+    Route::resource('inventario', InventarioController::class)->parameters([
+        'inventario' => 'fk_setor'
+    ]);
     Route::resource('cadastro/item',ItemController::class);
 });
 
