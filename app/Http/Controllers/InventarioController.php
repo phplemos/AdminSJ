@@ -19,23 +19,26 @@ class InventarioController extends Controller
     public function index()
     {
         $setor = new Setor;
-        $lista = $setor->all();
-        $inventario = new Inventario;
-        $inventarios = $inventario->all();
-        // PAREI AQUI HJ
-        // $nome_setor = Setor::find($inventarios->fk_inventario);
-        dd($lista);
-        return view('layouts.inventario.lista', compact('lista','inventarios','nome_setor'));
+        if ($setor->all()) {
+            $lista = $setor->all();
+            $inventario = new Inventario;
+            $inventarios = $inventario->all();
+            return view('layouts.inventario.lista', compact('lista', 'inventarios',));
+        } else {
+            $setor->create(['nome_setor' => 'Administrativo']);
+            $lista = $setor->all();
+            return redirect('/inventario', '302');
+        }
+
     }
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
     }
 
     /**
@@ -45,20 +48,17 @@ class InventarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(InventarioRequest $request)
-    {   
+    {
 
-        try{
-        $fk_setor = $request->fk_setor;
-        $inventario = new Inventario;
-        $inventario->create(['fk_setor' => strval($fk_setor)]);
-        
-        return view('layouts.inventario.novo',['fk_inventario' => $inventario->all()]);
-        
-        }
-        catch (Throwable $e) {
+        try {
+            $fk_setor = $request->fk_setor;
+            $inventario = new Inventario;
+            $inventario->create(['fk_setor' => strval($fk_setor)]);
+
+            return view('layouts.inventario.novo', ['fk_inventario' => $inventario->all()]);
+        } catch (Throwable $e) {
             report($e);
             dd($e);
-            
         }
     }
 
@@ -72,8 +72,9 @@ class InventarioController extends Controller
     {
         $inventario = new Inventario;
         $inventario->create(['fk_setor' => $id]);
-        
-        return view('layouts.inventario.novo',['fk_inventario' => $inventario->get('id')]);     }
+
+        return view('layouts.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
+    }
 
     /**
      * Show the form for editing the specified resource.

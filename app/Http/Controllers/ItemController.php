@@ -52,13 +52,14 @@ class ItemController extends Controller
                 'fk_inventario' => $fkinventario,
                 'fk_categoria' => 4,
             ]);
-            return view('inventario',['message' => 'Item Cadastrados']);
-            
+
+            return view("inventario/{$fkinventario}",['message' => 'Item Cadastrados']);
+
             }
             catch (Throwable $e) {
                 report($e);
                 dd($e);
-                
+
             }
     }
 

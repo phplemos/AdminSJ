@@ -101,7 +101,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger text-seconday bg-danger"
                                                 data-bs-dismiss="modal">Cancelar</button>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

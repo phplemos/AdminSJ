@@ -54,7 +54,7 @@
                             @foreach ($inventarios as $inventario)
                                 <tr>
                                     <th scope="row">{{$inventario->id}}</th>
-                                    <td>{{$nome_setor}}</td>
+                                    <td>{{$inventario->fk_setor}}</td>
                                     <td>{{$inventario->created_at}}</td>
                                     <td>
                                         <button type="submit" class="btn btn-warning">Visualizar</button>
