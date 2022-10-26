@@ -13,13 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/user', function () {
+        return view('profile');
+    })->name('profile');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 // useless routes
 // Just to demo sidebar dropdown links active states.
