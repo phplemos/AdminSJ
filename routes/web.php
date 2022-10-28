@@ -16,16 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function(){        
+Route::middleware('auth')->group(function(){
     Route::resource('inventario', InventarioController::class)->parameters([
         'inventario' => 'fk_setor'
     ]);
