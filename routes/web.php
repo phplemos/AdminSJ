@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+
+
 
     Route::get('/', function () {
         return view('dashboard');
@@ -22,7 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user', function () {
         return view('profile');
     })->name('profile');
-});
+
 
 
 
