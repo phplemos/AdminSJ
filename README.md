@@ -16,12 +16,16 @@ Node 18.x
 O projeto foi desenvolvido utilizando o Laravel 9.x, Postgres, Breeze e Bootstrap4.
 Para iniciar o projeto em sua maquina basta seguir os passos a seguir.
 ### 1º
-Renomear o arquivo "Default-env" Para ".env" e acrescentar as informações do banco de dados.
+Renomear o arquivo "default-env" Para ".env" e acrescentar as informações do banco de dados.
 ### 2º
 ```shell
 composer install
+npm install
+npm run build
+composer dump-autoload
 php artisan key:generate
-php artisan migrate
+php artisan migrate 
+php artisan migrate:fresh --seed
 ```
 
 Here you should say what actually happens when you execute the code above.
