@@ -19,6 +19,7 @@ Para iniciar o projeto em sua maquina basta seguir os passos a seguir.
 Renomear o arquivo "default-env" Para ".env" e acrescentar as informações do banco de dados.
 ### 2º
 ```shell
+
 composer install
 npm install
 npm run build
@@ -26,6 +27,7 @@ composer dump-autoload
 php artisan key:generate
 php artisan migrate 
 php artisan migrate:fresh --seed
+
 ```
 
 Here you should say what actually happens when you execute the code above.
