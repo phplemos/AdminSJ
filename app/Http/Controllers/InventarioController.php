@@ -18,16 +18,20 @@ class InventarioController extends Controller
      */
     public function index()
     {
+        try{
         $setor = new Setor;
         if ($setor->all()) {
             $lista = $setor->all();
             $inventario = new Inventario;
             $inventarios = $inventario->all();
-            return view('layouts.inventario.lista', compact('lista', 'inventarios',));
+            return view('teste', compact('lista', 'inventarios',));
         } else {
             $setor->create(['nome_setor' => 'Administrativo']);
             $lista = $setor->all();
             return redirect('/inventario', '302');
+        }
+        }catch(Throwable $error){
+            dd($error);
         }
 
     }

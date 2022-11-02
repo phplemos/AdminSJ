@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon.ico">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Administrativo São José</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -27,7 +27,7 @@
     <link href="assets/css/demo.css" rel="stylesheet" />
 </head>
 
-<body class="font-sans antialiased bg-warning">
+<body>
     <div class="image-container set-full-height" style="background-image: url('assets/img/background.jpg')">
         <!--   Creative Tim Branding   -->
         <a href="http://creative-tim.com">
@@ -41,11 +41,11 @@
             </div>
         </a>
 
-        <!--  Precisa de ajuda ?  -->
-        <a href="#"
+        <!--  Made With Material Kit  -->
+        <a href="http://demos.creative-tim.com/material-kit/index.html?ref=material-bootstrap-wizard"
             class="made-with-mk">
-            <div class="text">?</div>
-            <div class="text">Precisa de ajuda? <strong>Ligue!</strong></div>
+            <div class="brand">MK</div>
+            <div class="made-with">Made with <strong>Material Kit</strong></div>
         </a>
 
         <!--   Big container   -->
@@ -67,11 +67,11 @@
                                             setor:</label>
                                         <select id="selecao_setor" class="form-select" id="fk_setor"
                                             name="fk_setor">
-
-                                                <option name="fk_setor" value="">
-
+                                            @foreach ($lista as $setor)
+                                                <option name="fk_setor" value="{{ $setor->id }}">
+                                                    {{ $setor->nome_setor }}
                                                 </option>
-
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -86,6 +86,7 @@
 
 
                                 <div class="tab-content">
+                                    @foreach ($inventarios as $inventario)
                                     <div class="tab-pane" id="about">
                                         <div class="card">
                                             <div class="table-responsive">
@@ -112,17 +113,17 @@
                                                             <td>
                                                                 <div class="d-flex px-2">
                                                                     <div class="my-auto">
-                                                                        <h6 class="mb-0 text-xs"></h6>
+                                                                        <h6 class="mb-0 text-xs">{{ $inventario->id }}</h6>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <p class="text-xs font-weight-normal mb-0"></p>
+                                                                <p class="text-xs font-weight-normal mb-0">{{ $lista[$inventario->fk_setor]->nome_setor }}</p>
                                                             </td>
                                                             <td>
                                                                 <span class="badge badge-dot me-4">
                                                                     <i class="bg-info"></i>
-                                                                    <span class="text-dark text-xs"></span>
+                                                                    <span class="text-dark text-xs">{{ $inventario->created_at }}</span>
                                                                 </span>
                                                             </td>
                                                             <td class="align-middle">
@@ -138,7 +139,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    @endforeach
 
                                     <div class="tab-pane" id="account">
                                         <h4 class="info-text"> What are you doing? (checkboxes) </h4>
@@ -206,5 +207,16 @@
     </div>
 
 </body>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.bootstrap.js" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="assets/js/material-bootstrap-wizard.js"></script>
+
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="assets/js/jquery.validate.min.js"></script>
 
 </html>

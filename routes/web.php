@@ -23,10 +23,12 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function(){
+
+
     Route::resource('inventario', InventarioController::class)->parameters([
         'inventario' => 'fk_setor'
     ]);
-    Route::resource('cadastro/item',ItemController::class);
+    Route::resource('item',ItemController::class);
 });
 
 require __DIR__.'/auth.php';
