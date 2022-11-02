@@ -6,9 +6,9 @@ O projeto deu-se inicio ao observar que havia algumas coisas que poderiam ser au
 ## Requisitos
 ```shell
 Apache 2.4+
-Php 8.X+ 
-PostgresSQL 
-Node 18.x
+Php 8.1+ 
+Mysql 
+Node 17+
 ```
 
 ## Instalando / Iniciando o projeto
