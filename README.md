@@ -30,7 +30,9 @@ php artisan migrate:fresh --seed
 
 ```
 
-Here you should say what actually happens when you execute the code above.
+## Atualizações Sobre o Projeto
+
+02/11/2022 - "Andei estudando um pouco de html e css para começar a ter mais noção de como aplicar templates, começando a configurar o layout decidi usar o template Material-Kit da Creative Tim, consegui aplicar, agora vou começar a aplicar as funcionalidades, a rota "/inventario" ja está listando os inventarios criados e nomeando o setor que é originário."
 
 ### Initial Configuration
  
