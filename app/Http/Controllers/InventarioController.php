@@ -24,7 +24,7 @@ class InventarioController extends Controller
             $lista = $setor->all();
             $inventario = new Inventario;
             $inventarios = $inventario->all();
-            return view('teste', compact('lista', 'inventarios',));
+            return view('dashboard', compact('lista', 'inventarios',));
         } else {
             $setor->create(['nome_setor' => 'Administrativo']);
             $lista = $setor->all();
