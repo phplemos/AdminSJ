@@ -16,7 +16,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('layouts.inventario.item');
+        return view('pages.inventario.novo');
     }
 
     /**

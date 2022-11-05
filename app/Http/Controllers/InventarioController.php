@@ -18,22 +18,17 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        try{
-        $setor = new Setor;
-        if ($setor->all()) {
+        try {
+
+            $setor = new Setor;
             $lista = $setor->all();
             $inventario = new Inventario;
+
             $inventarios = $inventario->all();
-            return view('dashboard', compact('lista', 'inventarios',));
-        } else {
-            $setor->create(['nome_setor' => 'Administrativo']);
-            $lista = $setor->all();
-            return redirect('/inventario', '302');
-        }
-        }catch(Throwable $error){
+            return view('pages.inventario.lista', compact('lista', 'inventarios',));
+        } catch (Throwable $error) {
             dd($error);
         }
-
     }
 
     /**
@@ -59,7 +54,8 @@ class InventarioController extends Controller
             $inventario = new Inventario;
             $inventario->create(['fk_setor' => strval($fk_setor)]);
 
-            return view('layouts.inventario.novo', ['fk_inventario' => $inventario->all()]);
+            return view('pages.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
+
         } catch (Throwable $e) {
             report($e);
             dd($e);
@@ -77,7 +73,7 @@ class InventarioController extends Controller
         $inventario = new Inventario;
         $inventario->create(['fk_setor' => $id]);
 
-        return view('layouts.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
+        return view('pages.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
     }
 
     /**
