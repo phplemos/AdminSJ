@@ -7,6 +7,9 @@ use App\Models\Inventario;
 use App\Models\Item;
 use App\Models\Setor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use League\CommonMark\Extension\Table\Table;
+use Nette\Utils\Json;
 use Throwable;
 
 class InventarioController extends Controller
@@ -19,13 +22,11 @@ class InventarioController extends Controller
     public function index()
     {
         try {
-
             $setor = new Setor;
-            $lista = $setor->all();
+            $setores = $setor->all();
             $inventario = new Inventario;
-
             $inventarios = $inventario->all();
-            return view('pages.inventario.lista', compact('lista', 'inventarios',));
+            return view('pages.inventario.lista', compact('setores', 'inventarios',));
         } catch (Throwable $error) {
             dd($error);
         }
@@ -52,10 +53,8 @@ class InventarioController extends Controller
         try {
             $fk_setor = $request->fk_setor;
             $inventario = new Inventario;
-            $inventario->create(['fk_setor' => strval($fk_setor)]);
-
-            return view('pages.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
-
+            $novo_inventario = $inventario->create(['fk_setor' => strval($fk_setor)]);
+            return redirect("inventario/{$novo_inventario->id}")->with('message', 'Sucesso!');
         } catch (Throwable $e) {
             report($e);
             dd($e);
@@ -70,10 +69,15 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        $inventario = new Inventario;
-        $inventario->create(['fk_setor' => $id]);
 
-        return view('pages.inventario.novo', ['fk_inventario' => $inventario->get('id')]);
+        try {
+            $item = Item::paginate();
+            return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item]);
+        } catch (Throwable $e) {
+            report($e);
+            dd($e);
+
+        }
     }
 
     /**
