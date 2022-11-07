@@ -11,6 +11,9 @@
 
     <div class="flex flex-col p-2  bg-white rounded-lg shadow-md dark:bg-dark-eval-1 ">
         <!-- This is an example component -->
+        @if(session('message'))
+        <p>{{session('message')}} </p>
+        @endif
         <div class="max-w-2xl mx-auto">
 
             <div class="relative overflow-x-auto shadow-md rounded-lg">
@@ -58,9 +61,8 @@
                                 </td>
                                 <td class="px-6 py-4">
 
-                                    <form action="/inventario/{{$inventario->id}}" method="DELETE">
-                                        @csrf
-                                        <button class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500" type="submit">X</button>
+                                    <form action="/inventario/{{$inventario->id}}" method="GET">
+                                        <button class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500" type="submit">Visualizar</button>
                                     </form>
                                 </td>
                             </tr>

@@ -69,14 +69,16 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-
         try {
-            $item = Item::paginate();
-            return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item]);
+            $inventario = Inventario::find($id);
+            if(isset($inventario)){
+                $item = Item::paginate();
+                return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item]);
+            }else{
+                return redirect('/inventario','302')->with('message', 'Inventario Não existe!');
+            }
         } catch (Throwable $e) {
-            report($e);
             dd($e);
-
         }
     }
 
