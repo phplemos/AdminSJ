@@ -32,9 +32,13 @@ php artisan migrate:fresh --seed
 
 ## Atualizações Sobre o Projeto
 
-02/11/2022 - "Andei estudando um pouco de html e css para começar a ter mais noção de como aplicar templates, começando a configurar o layout decidi usar o template Material-Kit da Creative Tim, consegui aplicar, agora vou começar a aplicar as funcionalidades, a rota "/inventario" ja está listando os inventarios criados e nomeando o setor que é originário."
-05/11/2022 - "Passaram 3 dias estudando um pouco mais sobre o tailwindCss para poder ter mais noção de posicionamento de divs na tela, apesar de meu foco ser como a engrenagem do projeto vai ser articulada, estou tendo que aprender um pouco de front e javascript("Pensando ate em aprender um pouco sobre nodeJS"), decidi usar o tema kamonaUI ou KUI de Ahmed Kamel(git/Kamona-WD), consegui recriar a tela de inventario porem tiver que encerar o dia."
-06/11/2022 - "Após finalizar alguns ajustes na tela de inventario e organizar as rotas direcionando após criar um novo inventario ele direciona para a pagina do inventario listando todos os itens, estou tendo dificuldades em encontrar algumas respostas sobre o Eloquent, metodos que posso usar encadeado com a classes e afins, mas estou pesquisando e aprendendo bastate, meu objetivo é ainda no dia 07/11/2022 adicionar a funcionalidade de inserir item."
+02/11/2022 - "Andei estudando um pouco de html e css para começar a ter mais noção de como aplicar templates, começando a configurar o layout decidi usar o template Material-Kit da Creative Tim, consegui aplicar, agora vou começar a aplicar as funcionalidades, a rota "/inventario" ja está listando os inventarios criados e nomeando o setor que é originário";
+
+05/11/2022 - "Passaram 3 dias estudando um pouco mais sobre o tailwindCss para poder ter mais noção de posicionamento de divs na tela, apesar de meu foco ser como a engrenagem do projeto vai ser articulada, estou tendo que aprender um pouco de front e javascript("Pensando ate em aprender um pouco sobre nodeJS"), decidi usar o tema kamonaUI ou KUI de Ahmed Kamel(git/Kamona-WD), consegui recriar a tela de inventario porem tiver que encerar o dia";
+
+06/11/2022 - "Após finalizar alguns ajustes na tela de inventario e organizar as rotas direcionando após criar um novo inventario ele direciona para a pagina do inventario listando todos os itens, estou tendo dificuldades em encontrar algumas respostas sobre o Eloquent, metodos que posso usar encadeado com a classes e afins, mas estou pesquisando e aprendendo bastate, meu objetivo é ainda no dia 07/11/2022 adicionar a funcionalidade de inserir item";
+
+07/11/2022 - "Hoje no trabalho consegui corrigir o endereçamento dos inventarios por ID diretamente na rota utilizando o metodo show agregado com a classe Route::resource(), direcionando para a rota atraves da URI";
 
 ### Initial Configuration
  
