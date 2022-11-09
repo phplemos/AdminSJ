@@ -14,11 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(SetorSeeder::class);
+        $this->call(CategoriaSeeder::class);
 
-        \App\Models\User::create([
-            'name' => 'Admin',
-            'email' => 'admin@saojose.com.br',
-            'password' => '123456789'
-        ]);
     }
 }
