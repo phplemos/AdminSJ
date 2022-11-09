@@ -85,8 +85,7 @@
                                         {{ $inventario->created_at }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="{{ action('InventarioController@show',['id' => $inventario->id])}}" method="GET">
-                                            @csrf
+                                        <form action="{{route('inventario.show', $inventario->id)}}" method="GET">
                                             <input type="hidden" name="id" value="{{$inventario->id}}">
                                             <button class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500" type="submit">Visualizar</button>
                                         </form>
