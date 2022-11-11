@@ -10,9 +10,11 @@
 
 
     <div class="flex flex-col p-2  bg-white rounded-lg shadow-md dark:bg-dark-eval-1 ">
-        <!-- This is an example component -->
+
         @if (session('message'))
-            <p>{{ session('message') }} </p>
+            <div class="flex flex-col bg-white shadow-md rounded-lg">
+                <p>{{ session('message')}} </p>
+            </div>
         @endif
         <div class="overflow-x-auto shadow-md rounded-lg">
 
@@ -27,12 +29,13 @@
                             </div>
                         </div>
                         <div class="px-6">
-                            <select name="fk_setor" class="form-select rounded-lg dark:bg-gray-700 dark:text-gray-400" aria-label="Default select example">
+                            <select name="fk_setor" class="form-select rounded-lg dark:bg-gray-700 dark:text-gray-400"
+                                aria-label="Default select example">
 
                                 @foreach ($setores as $setor)
-                                        <option value="{{ $setor->id }}">{{ $setor->nome_setor }}
-                                        </option>
-                                    @endforeach
+                                    <option value="{{ $setor->id }}">{{ $setor->nome_setor }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="px-6">
@@ -74,10 +77,10 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         <form action="{{ route('inventario.show', $inventario->id) }}" method="GET">
-                                            <input type="hidden" name="id" value="{{ $inventario->id }}">
-                                            <button
-                                                class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500 rounded"
-                                                type="submit">Visualizar</button>
+                                            <input type="hidden" name="id_inventario" value="{{ $inventario->id }}">
+                                            <button class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500 rounded" type="submit">
+                                                Visualizar
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InventarioRequest;
+use App\Http\Requests\ItemRequest;
 use App\Models\Categoria;
 use App\Models\Inventario;
 use App\Models\Item;
@@ -49,14 +50,13 @@ class InventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InventarioRequest $request)
+    public function store(Request $request)
     {
-
         try {
             $fk_setor = $request->fk_setor;
             $inventario = new Inventario;
             $novo_inventario = $inventario->create(['fk_setor' => strval($fk_setor)]);
-            return redirect("inventario/{$novo_inventario->id}")->with('message', 'Sucesso!');
+            return redirect()->route('inventario.show',$novo_inventario)->with('message','Inventario cadastrado com sucesso');
         } catch (Throwable $e) {
             report($e);
             dd($e);
@@ -66,17 +66,19 @@ class InventarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $id)
     {
+
         try {
             $inventario = Inventario::find($id);
             if(isset($inventario)){
                 $item = Item::paginate();
                 $categorias = Categoria::all();
-                return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item, 'categorias' =>$categorias]);
+
+                return view('pages.inventario.inventario', ['id_inventario' => $id, 'itens' => $item, 'categorias' =>$categorias]);
             }else{
                 return redirect('/inventario','302')->with('message', 'Inventario Não existe!');
             }

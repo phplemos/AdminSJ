@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InventarioRequest extends FormRequest
+class ItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class InventarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'fk_setor' => 'required|integer',
             'id' =>'required|integer'
         ];
     }
 }
+ 
