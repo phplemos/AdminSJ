@@ -43,7 +43,7 @@ php artisan migrate:fresh --seed
 08/11/2022 - "Hoje apesar da correria do dia, consegui fazer algumas alterações, criei Seeders para facilitar o manuseio e teste, ainda algumas duvidas sobre as rotas, mas estou pesquisando sobre, até entao a funcionalidade de criar um inventario e visualizar 
 o inventario que desejar da lista estão funcionando, a medida que estudo mais um poucom vou corrigindo falhas que percebo";
 
-10/11/2022 - "A semana foi corrida, nao deu pra mexer direito no projeto, mas hoje colocarei as funcionalidade de enviar um item ao inventario";
+10/11/2022 - "A semana foi corrida, nao deu pra mexer direito no projeto, mas hoje colocarei as funcionalidade de enviar um item ao inventario, e fiz algumas alterações nas telas como um model para inserir item e retornar para a pagina anterior, estou tendo dificuldade com o redirect() mas estou pesquisando sobre";
 
 ### Initial Configuration
  
