@@ -53,7 +53,7 @@ class ItemController extends Controller
                 'img_item' =>$img,
                 'fk_inventario' => $fkinventario,
                 'fk_categoria' => $fkcategoria]);
-            return redirect("inventario/{$fkinventario}",['message' => 'Item Cadastrados']);
+            return redirect("/inventario/{$fkinventario}",302,['message' => 'Item Cadastrados']);
             }
             catch (Throwable $e) {
                 report($e);

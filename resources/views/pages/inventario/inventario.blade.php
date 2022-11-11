@@ -70,8 +70,8 @@
                                                             for="nome_item">Nome Item</label>
                                                         <input
                                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                                            id="nome_item" name="nome_setor" type="text"
-                                                            placeholder="Nome Setor">
+                                                            id="nome_item" name="nome_item" type="text"
+                                                            placeholder="Nome item">
                                                         <p class="text-red-500 text-xs italic">Obrigatório*</p>
                                                     </div>
                                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -80,7 +80,7 @@
                                                             for="quantidade_item">Quantidade Item</label>
                                                         <input
                                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                                            id="quantidade_item" type="number"
+                                                            id="quantidade_item" name="quantidade_item" type="number"
                                                             placeholder="Quantidade item">
                                                         <p class="text-red-500 text-xs italic">Obrigatório*</p>
                                                     </div>
@@ -93,7 +93,7 @@
                                                             Descrição item
                                                         </label>
                                                         <input
-                                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="descricao_item" type="text" placeholder="Descrição do item">
+                                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="descricao_item" name="descricao_item"type="text" placeholder="Descrição do item">
                                                         <p class="text-gray-600 text-xs italic">Seja o mais objetivo possível</p>
                                                     </div>
                                                 </div>
@@ -106,8 +106,8 @@
                                                         </label>
                                                         <input
                                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                            id="img_item" type="link"
-                                                            placeholder="Descrição do item">
+                                                            id="img_item" name="img_item" type="link"
+                                                            placeholder="Imagem do item">
                                                     </div>
                                                 </div>
 
@@ -138,42 +138,46 @@
                                     class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="p-4">
-                                            Id:
+                                            Nome:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Setor:
+                                            Categoria:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Criado em:
+                                            Descrição item:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Ações:
+                                            Imagem do item:
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Ações
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($itens as $item)
-                                        <tr
-                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="w-4 p-4">
                                                 {{ $item->nome_item }}
                                             </td>
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                                {{ $categoria[$item->fk_categoria - 1]->nome_categoroa }}
+                                            <th scope="row" class="w-4 p-4">
+                                                {{ $categorias[$item->fk_categoria]->nome_categoria }}
                                             </th>
                                             <td class="px-6 py-4">
-                                                {{ $inventario->created_at }}
+                                                {{ $item->descricao_item }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                <form action="{{ route('inventario.show', $inventario->id) }}"
+                                                {{ $item->img_item }}
+                                            </td>
+                                            <td>
+                                                {{-- <form action="{{ route('inventario.show', $inventario->id) }}"
                                                     method="GET">
                                                     <input type="hidden" name="id"
                                                         value="{{ $inventario->id }}">
                                                     <button
                                                         class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500"
                                                         type="submit">Visualizar</button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
