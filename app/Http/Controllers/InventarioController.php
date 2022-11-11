@@ -25,6 +25,7 @@ class InventarioController extends Controller
             $setor = new Setor;
             $setores = $setor->all();
             $inventario = new Inventario;
+            // dd($setores);
             $inventarios = $inventario->all();
             return view('pages.inventario.lista', compact('setores', 'inventarios',));
         } catch (Throwable $error) {

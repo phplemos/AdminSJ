@@ -14,43 +14,24 @@
         @if (session('message'))
             <p>{{ session('message') }} </p>
         @endif
-        <div class="max-w-2xl mx-auto">
+        <div class="overflow-x-auto shadow-md rounded-lg"">
 
-            <div class="flex flex-col overflow-x-auto shadow-md rounded-lg">
+            <div class="flex flex-col">
 
-                <div class="flex flex-row p-4">
-                    <div class="flex ">
-                        <form action="{{ route('inventario.store') }}" method="post">
-                            @csrf
-                        <select name="fk_setor"
-                            class="form-select appearance-none
-                            block
-                            w-full
-                            px-3
-                            py-1.5
-                            text-base
-                            font-normal
-                            text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            aria-label="Default select example">
-                            @foreach ($setores as $setor)
-                                <option value="{{ $setor->id }}">{{ $setor->nome_setor }}</option>
-                            @endforeach
-                        </select>
-                        <div class="flex justify-end">
-                            <button type="submit">Salve</button>
-                        </div>
+                <div class="flex flex-row">
+                    <form action="{{ route('inventario.store') }} " method="POST">
                         @csrf
-                        </form>
-                    </div>
-
-
+                        <div class="flex flex-nowrap">
+                            <select name="fk_setor" class="form-select rounded-lg" aria-label="Default select example">
+                                @foreach ($setores as $setor)
+                                <option value="{{$setor->id}}">{{$setor->nome_setor}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="flex flex-nowrap">
+                            <x-button variant="success"> Novo Inventario</x-button>
+                        </div>
+                    </form>
                 </div>
                 <div class="p-4">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -79,15 +60,17 @@
                                     </td>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                        Ver nome setor
+                                        {{$setores[($inventario->fk_setor+1)]->nome_setor}}
                                     </th>
                                     <td class="px-6 py-4">
                                         {{ $inventario->created_at }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="{{route('inventario.show', $inventario->id)}}" method="GET">
-                                            <input type="hidden" name="id" value="{{$inventario->id}}">
-                                            <button class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500" type="submit">Visualizar</button>
+                                        <form action="{{ route('inventario.show', $inventario->id) }}" method="GET">
+                                            <input type="hidden" name="id" value="{{ $inventario->id }}">
+                                            <button
+                                                class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500"
+                                                type="submit">Visualizar</button>
                                         </form>
                                     </td>
                                 </tr>
