@@ -93,8 +93,11 @@
                                                             Descrição item
                                                         </label>
                                                         <input
-                                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="descricao_item" name="descricao_item"type="text" placeholder="Descrição do item">
-                                                        <p class="text-gray-600 text-xs italic">Seja o mais objetivo possível</p>
+                                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                            id="descricao_item" name="descricao_item"type="text"
+                                                            placeholder="Descrição do item">
+                                                        <p class="text-gray-600 text-xs italic">Seja o mais objetivo
+                                                            possível</p>
                                                     </div>
                                                 </div>
                                                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -135,7 +138,7 @@
                         <div class="p-4">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
-                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="p-4">
                                             Nome:
@@ -144,10 +147,13 @@
                                             Categoria:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Descrição item:
+                                            Descrição:
+                                        </th>
+                                        <th scope="col" class="text-center px-6 py-3">
+                                            Quantidade:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Imagem do item:
+                                            Imagem:
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Ações
@@ -156,7 +162,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($itens as $item)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <tr
+                                            class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="w-4 p-4">
                                                 {{ $item->nome_item }}
                                             </td>
@@ -165,6 +172,9 @@
                                             </th>
                                             <td class="px-6 py-4">
                                                 {{ $item->descricao_item }}
+                                            </td>
+                                            <td scope="px-4 py-4">
+                                                    {{ $item->quantidade_item }}
                                             </td>
                                             <td class="px-6 py-4">
                                                 {{ $item->img_item }}
