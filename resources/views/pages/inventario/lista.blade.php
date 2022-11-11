@@ -60,7 +60,7 @@
                                     </td>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                        {{$setores[($inventario->fk_setor+1)]->nome_setor}}
+                                        {{$setores[($inventario->fk_setor-1)]->nome_setor}}
                                     </th>
                                     <td class="px-6 py-4">
                                         {{ $inventario->created_at }}

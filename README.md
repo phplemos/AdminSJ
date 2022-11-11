@@ -40,7 +40,10 @@ php artisan migrate:fresh --seed
 
 07/11/2022 - "Hoje no trabalho consegui corrigir o endereçamento dos inventarios por ID diretamente na rota utilizando o metodo show agregado com a classe Route::resource(), direcionando para a rota atraves da URI";
 
-08/11/2022 - "Hoje apesar da correria do dia, consegui fazer algumas alterações, criei Seeders para facilitar o manuseio e teste, ainda algumas duvidas sobre as rotas, mas estou pesquisando sobre, até entao a funcionalidade de criar um inventario e visualizar o inventario que desejar da lista estão funcionando, a medida que estudo mais um poucom vou corrigindo falhas que percebo";
+08/11/2022 - "Hoje apesar da correria do dia, consegui fazer algumas alterações, criei Seeders para facilitar o manuseio e teste, ainda algumas duvidas sobre as rotas, mas estou pesquisando sobre, até entao a funcionalidade de criar um inventario e visualizar 
+o inventario que desejar da lista estão funcionando, a medida que estudo mais um poucom vou corrigindo falhas que percebo";
+
+10/11/2022 - "A semana foi corrida, nao deu pra mexer direito no projeto, mas hoje colocarei as funcionalidade de enviar um item ao inventario";
 
 ### Initial Configuration
  
