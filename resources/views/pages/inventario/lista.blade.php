@@ -14,21 +14,28 @@
         @if (session('message'))
             <p>{{ session('message') }} </p>
         @endif
-        <div class="overflow-x-auto shadow-md rounded-lg"">
+        <div class="overflow-x-auto shadow-md rounded-lg">
 
             <div class="flex flex-col">
 
-                <div class="flex flex-row">
-                    <form action="{{ route('inventario.store') }} " method="POST">
+                <div class="p-4">
+                    <form class="flex flex-row p-4" action="{{ route('inventario.store') }} " method="POST">
                         @csrf
-                        <div class="flex flex-nowrap">
-                            <select name="fk_setor" class="form-select rounded-lg" aria-label="Default select example">
+                        <div class="flex p-3">
+                            <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <h1>Setores:</h1>
+                            </div>
+                        </div>
+                        <div class="px-6">
+                            <select name="fk_setor" class="form-select rounded-lg dark:bg-gray-700 dark:text-gray-400" aria-label="Default select example">
+
                                 @foreach ($setores as $setor)
-                                <option value="{{$setor->id}}">{{$setor->nome_setor}}</option>
-                                @endforeach
+                                        <option value="{{ $setor->id }}">{{ $setor->nome_setor }}
+                                        </option>
+                                    @endforeach
                             </select>
                         </div>
-                        <div class="flex flex-nowrap">
+                        <div class="px-6">
                             <x-button variant="success"> Novo Inventario</x-button>
                         </div>
                     </form>
@@ -60,7 +67,7 @@
                                     </td>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                        {{$setores[($inventario->fk_setor-1)]->nome_setor}}
+                                        {{ $setores[$inventario->fk_setor - 1]->nome_setor }}
                                     </th>
                                     <td class="px-6 py-4">
                                         {{ $inventario->created_at }}
@@ -69,7 +76,7 @@
                                         <form action="{{ route('inventario.show', $inventario->id) }}" method="GET">
                                             <input type="hidden" name="id" value="{{ $inventario->id }}">
                                             <button
-                                                class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500"
+                                                class="bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500 rounded"
                                                 type="submit">Visualizar</button>
                                         </form>
                                     </td>

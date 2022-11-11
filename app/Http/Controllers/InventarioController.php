@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InventarioRequest;
+use App\Models\Categoria;
 use App\Models\Inventario;
 use App\Models\Item;
 use App\Models\Setor;
@@ -74,7 +75,8 @@ class InventarioController extends Controller
             $inventario = Inventario::find($id);
             if(isset($inventario)){
                 $item = Item::paginate();
-                return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item]);
+                $categorias = Categoria::all();
+                return view('pages.inventario.inventario', ['fk_inventario' => $id, 'itens' => $item, 'categorias' =>$categorias]);
             }else{
                 return redirect('/inventario','302')->with('message', 'Inventario Não existe!');
             }
