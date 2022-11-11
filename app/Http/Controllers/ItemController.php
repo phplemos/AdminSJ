@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Throwable;
@@ -16,7 +17,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('pages.inventario.novo');
+        return view('pages.inventario.inventario');
     }
 
     /**
@@ -45,20 +46,18 @@ class ItemController extends Controller
             $descricao =  $request->descricao_item;
             $quantidade = $request->quantidade_item;
             $img = $request->img_item;
-
             $cadastrar->create([
                 'nome_item' => $nome,
                 'descricao_item' => $descricao,
                 'quantidade_item' => $quantidade,
                 'img_item' =>$img,
                 'fk_inventario' => $fkinventario,
-                'fk_categoria' => $fkcategoria]);
-            return redirect("/inventario/{$fkinventario}",302,['message' => 'Item Cadastrados']);
+                'fk_categoria' => $fkcategoria]);{}
+                return redirect('/inventario/{$fkinventario}')->with('message','Cadastrado com sucesso!');
             }
             catch (Throwable $e) {
                 report($e);
                 dd($e);
-
             }
     }
 

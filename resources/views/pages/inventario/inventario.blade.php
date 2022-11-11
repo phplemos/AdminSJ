@@ -168,7 +168,7 @@
                                                 {{ $item->nome_item }}
                                             </td>
                                             <th scope="row" class="w-4 p-4">
-                                                {{ $categorias[$item->fk_categoria]->nome_categoria }}
+                                                {{-- {{ $categorias[$item->fk_categoria]->nome_categoria }} --}}
                                             </th>
                                             <td class="px-6 py-4">
                                                 {{ $item->descricao_item }}
