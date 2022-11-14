@@ -73,12 +73,11 @@ class InventarioController extends Controller
     {
 
         try {
-            $inventario = Inventario::find($id);
+            $inventario = Inventario::find($id->id_inventario);
             if(isset($inventario)){
-                $item = Item::paginate();
+                $item = DB::table('items')->where('fk_inventario', '=',$id->id_inventario)->get();
                 $categorias = Categoria::all();
-
-                return view('pages.inventario.inventario', ['id_inventario' => $id, 'itens' => $item, 'categorias' =>$categorias]);
+                return view('pages.inventario.inventario', ['fk_inventario' => $id->id_inventario, 'itens' => $item, 'categorias' =>$categorias]);
             }else{
                 return redirect('/inventario','302')->with('message', 'Inventario Não existe!');
             }

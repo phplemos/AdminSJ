@@ -39,24 +39,24 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         try{
-            $cadastrar = new Item;
+            $item = new Item;
             $fkinventario = $request->fk_inventario;
             $fkcategoria = $request->fk_categoria;
             $nome = $request->nome_item;
             $descricao =  $request->descricao_item;
             $quantidade = $request->quantidade_item;
             $img = $request->img_item;
-            $cadastrar->create([
+            $data = [
                 'nome_item' => $nome,
                 'descricao_item' => $descricao,
                 'quantidade_item' => $quantidade,
                 'img_item' =>$img,
                 'fk_inventario' => $fkinventario,
-                'fk_categoria' => $fkcategoria]);{}
-                return redirect('/inventario/{$fkinventario}')->with('message','Cadastrado com sucesso!');
+                'fk_categoria' => $fkcategoria ];
+            $item->create($data);
+            return redirect('/inventario/{$fkinventario}')->with('message','Cadastrado com sucesso!');
             }
             catch (Throwable $e) {
-                report($e);
                 dd($e);
             }
     }

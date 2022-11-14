@@ -45,6 +45,7 @@ o inventario que desejar da lista estão funcionando, a medida que estudo mais u
 
 10/11/2022 - "A semana foi corrida, nao deu pra mexer direito no projeto, mas hoje colocarei as funcionalidade de enviar um item ao inventario, e fiz algumas alterações nas telas como um model para inserir item e retornar para a pagina anterior, estou tendo dificuldade com o redirect() mas estou pesquisando sobre";
 
+12/11/2022 - "Semana vai ser corrida, mas consegui da o primeiro passo pra iniciar a semana bem, corrigi alguns erros de lógica entre os controllers de inventario e item, corrigi a funcionalidade de listagem de itens de cada inventario, ele buscar o item que esta no inventario, ainda vou configurar mais algumas coisas, mas no mais ta tudo funcionando como deveria, vou a partir de agora tentar organizar a parte de Gerenciamento de permissões, vi uma ferramenta chamada spatie, acho que irá funcionar!";
 ### Initial Configuration
  
 Pelo Projeto ser recente, ainda falta algumas informações que ao decorrer do desenvolvimento estarei publicando e atualizando o README.md

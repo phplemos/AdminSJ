@@ -21,7 +21,7 @@
                         <div>
                             <form class="flex flex-row p-4" action="{{ route('item.store') }} " method="POST">
                                 @csrf
-                                <input type="hidden" name="fk_inventario" value="{{ $id_inventario }}">
+                                <input type="hidden" name="fk_inventario" id="fk_inventario" value="{{$fk_inventario}}">
                                 <div class="flex p-3">
                                     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                         <h1>Categorias:</h1>
