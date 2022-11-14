@@ -54,7 +54,7 @@ class ItemController extends Controller
                 'fk_inventario' => $fkinventario,
                 'fk_categoria' => $fkcategoria ];
             $item->create($data);
-            return redirect('/inventario/{$fkinventario}')->with('message','Cadastrado com sucesso!');
+            return redirect('inventario/'.$fkinventario)->with('message','Cadastrado com sucesso!');
             }
             catch (Throwable $e) {
                 dd($e);

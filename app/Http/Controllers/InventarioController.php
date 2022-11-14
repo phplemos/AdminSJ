@@ -56,7 +56,8 @@ class InventarioController extends Controller
             $fk_setor = $request->fk_setor;
             $inventario = new Inventario;
             $novo_inventario = $inventario->create(['fk_setor' => strval($fk_setor)]);
-            return redirect()->route('inventario.show',$novo_inventario)->with('message','Inventario cadastrado com sucesso');
+
+            return redirect()->route('inventario.show',['inventario' => $novo_inventario->id])->with('message','Inventario cadastrado com sucesso');
         } catch (Throwable $e) {
             report($e);
             dd($e);
@@ -73,11 +74,11 @@ class InventarioController extends Controller
     {
 
         try {
-            $inventario = Inventario::find($id->id_inventario);
+            $inventario = Inventario::find($id->inventario);
             if(isset($inventario)){
-                $item = DB::table('items')->where('fk_inventario', '=',$id->id_inventario)->get();
+                $item = DB::table('items')->where('fk_inventario', '=',$id->inventario)->get();
                 $categorias = Categoria::all();
-                return view('pages.inventario.inventario', ['fk_inventario' => $id->id_inventario, 'itens' => $item, 'categorias' =>$categorias]);
+                return view('pages.inventario.inventario', ['fk_inventario' => $id->inventario, 'itens' => $item, 'categorias' =>$categorias]);
             }else{
                 return redirect('/inventario','302')->with('message', 'Inventario Não existe!');
             }
