@@ -25,7 +25,6 @@ class InventarioRequest extends FormRequest
     {
         return [
             'fk_setor' => 'required|integer',
-            'id' =>'required|integer'
         ];
     }
 }

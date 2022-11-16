@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
 use App\Models\Categoria;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -32,33 +33,32 @@ class ItemController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         try{
-            $item = new Item;
-            $fkinventario = $request->fk_inventario;
-            $fkcategoria = $request->fk_categoria;
-            $nome = $request->nome_item;
-            $descricao =  $request->descricao_item;
-            $quantidade = $request->quantidade_item;
-            $img = $request->img_item;
-            $data = [
-                'nome_item' => $nome,
-                'descricao_item' => $descricao,
-                'quantidade_item' => $quantidade,
-                'img_item' =>$img,
-                'fk_inventario' => $fkinventario,
-                'fk_categoria' => $fkcategoria ];
-            $item->create($data);
+                $item = new Item;
+                $fkinventario = $request->fk_inventario;
+                $fkcategoria = $request->fk_categoria;
+                $nome = $request->nome_item;
+                $descricao =  $request->descricao_item;
+                $quantidade = $request->quantidade_item;
+                $img = $request->img_item;
+                $data = [
+                    'nome_item' => $nome,
+                    'descricao_item' => $descricao,
+                    'quantidade_item' => $quantidade,
+                    'img_item' =>$img,
+                    'fk_inventario' => $fkinventario,
+                    'fk_categoria' => $fkcategoria ];
+                $item->create($data);
             return redirect('inventario/'.$fkinventario)->with('message','Cadastrado com sucesso!');
-            }
-            catch (Throwable $e) {
-                dd($e);
-            }
+        }
+        catch (Throwable $e){
+            return redirect('inventario/'.$fkinventario)->with('message','Algo deu errado! Verifique se preencheu corretamente o formulário.');
+        }
     }
 
     /**

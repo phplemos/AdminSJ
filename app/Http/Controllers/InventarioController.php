@@ -47,10 +47,10 @@ class InventarioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\InventarioRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InventarioRequest $request)
     {
         try {
             $fk_setor = $request->fk_setor;
@@ -72,7 +72,6 @@ class InventarioController extends Controller
      */
     public function show(Request $id)
     {
-
         try {
             $inventario = Inventario::find($id->inventario);
             if(isset($inventario)){
@@ -106,7 +105,7 @@ class InventarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         //
     }
 

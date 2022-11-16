@@ -17,13 +17,20 @@ class ItemRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to the request. mimes:jpg,bmp,png
      *
      * @return array<string, mixed>
      */
     public function rules()
     {
         return [
+            'nome_item' => 'required|string',
+            'descricao_item' => 'required|',
+            'quantidade_item' => 'required',
+            'img_item' => 'required',
+            'fk_inventario' => 'required',
+            'fk_categoria' => 'required',
+            '_token' => 'required'
         ];
     }
 }
